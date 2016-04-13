@@ -1,6 +1,7 @@
 /*
  * ttn_test.js -- Receives Packets from LoRaWAN Nodes via TheThingsNetwork
  * Author: Chris Merck
+ * April 2016
  *
  * NOTE: This is running on TTN's demonstration architecture,
  *  with an external MQTT->REST adaptor. This will need to be modified
