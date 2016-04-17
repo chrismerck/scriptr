@@ -6,6 +6,7 @@
  * NOTE: This is running on TTN's demonstration architecture,
  *  with an external MQTT->REST adaptor. This will need to be modified
  *  for TTN release V1.0 in Summer 2016.
+ * TES TES TES
  */
 
 /* 
