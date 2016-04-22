@@ -6,6 +6,7 @@
  * NOTE: This is running on TTN's demonstration architecture,
  *  with an external MQTT->REST adaptor. This will need to be modified
  *  for TTN release V1.0 in Summer 2016.
+ * TES TES TES test
  */
 
 /* 
@@ -13,8 +14,10 @@
    Thanks to @coder hacker on StackOverflow
    http://stackoverflow.com/a/23190164/1908146
  */
+
 var tableStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 var table = tableStr.split("");
+
 atob = function (base64) {
   if (/(=[^=]+|={3,})$/.test(base64)) throw new Error("String contains an invalid character");
   base64 = base64.replace(/=/g, "");
@@ -30,6 +33,7 @@ atob = function (base64) {
   };
   return String.fromCharCode.apply(null, bin).substr(0, bin.length + n - 4);
 };
+
 btoa = function (bin) {
   for (var i = 0, j = 0, len = bin.length / 3, base64 = []; i < len; ++i) {
     var a = bin.charCodeAt(j++), b = bin.charCodeAt(j++), c = bin.charCodeAt(j++);
@@ -40,11 +44,14 @@ btoa = function (bin) {
   }
   return base64.join("");
 };
+
+
 function hexToBase64(str) {
   return btoa(String.fromCharCode.apply(null,
     str.replace(/\r|\n/g, "").replace(/([\da-fA-F]{2}) ?/g, "0x$1 ").replace(/ +$/, "").split(" "))
   );
 }
+
 function base64ToHex(str) {
   for (var i = 0, bin = atob(str.replace(/[ \r\n]+$/, "")), hex = []; i < bin.length; ++i) {
     var tmp = bin.charCodeAt(i).toString(16);
@@ -71,14 +78,13 @@ if (topic_toks[0] == 'gateways') {
   // got node data packet
   // decode the base64 data field
   mqtt_pkt.message.data_ascii = base64ToHex(mqtt_pkt.message.data);
-  
-  /*
-   Now you do whatever you want with the packet from your node.
-   For now we just return the packet data structure.
-  */
-  
 } else {
   // error: unrecognized MQTT topic
 }
+
+/*
+   Now you do whatever you want with the packet from your node.
+   For now we just return the packet data structure.
+ */
 
 return mqtt_pkt;
